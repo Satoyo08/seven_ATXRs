@@ -12,6 +12,7 @@ Rdata$PValue <- as.numeric(Rdata$Raw.P.value) # Assuming column name is "Raw.P.v
 nsdata<-Rdata[Rdata$Fold.Enrichment>2.5,]
 data<-nsdata[rev(order(nsdata$PValue)),]
 
+# BiologicalProcessをPValueでソートした順に因子化
 data$BiologicalProcess <- factor(data$BiologicalProcess, levels = unique(data$BiologicalProcess))
 
 
