@@ -2,22 +2,19 @@
 
 Datasets and codes for "Comparative characterization of the seven H3K4 methyltransferase in Arabidopsis thaliana" (preparing for submission)
 
-
-
-
-# -- detailed method description for the data processing ---
+# codes for data preprocessing (in 'scripts' folder)
 
 ## ChIP-seq
 
 For ATX(R)-FLAG datasets;
 
-For both of the two replicates, raw data files (fastq.gz) were trimmed by `trimmer_array.sh`, then mapped and counted by  `fastq_to_bed_array.sh`. The resulting coverage files (bed) were then analyzed in R scripts in the folder the_seven_ATXRs.
+For both of the two replicates, raw data files (fastq.gz) were trimmed by `scripts/trimmer_array.sh`, then mapped and counted by  `scripts/fastq_to_bed_array.sh`. The resulting coverage files (bed) were then analyzed in R scripts in the folder the_seven_ATXRs.
 
 For H3K4me ChIP-seq of mutants of *atx3, atx4, atx5* (Fig. 4);
 
-Used read1 of the pair end reads. For both of the two replicates, raw data files (fastq.gz) were processed using `modified_from_SI_bowtie_loop_all_random_ChIP_no_singularity.sh`
+Used read1 of the pair end reads. For both of the two replicates, raw data files (fastq.gz) were processed using `scripts/modified_from_SI_bowtie_loop_all_random_ChIP_no_singularity.sh`
 
-Raw data files and browser track files (bw) are provided at [GSE277439]
+Raw data files and browser track files (bw) are provided at GSE277439
 
 ## splicing analysis
 
@@ -30,7 +27,7 @@ You can find the outline in the supplemental material of the paper.
 For the scripts and the key interemadiate datafiles, see /scripts/polyA-site_detection for the scripts and /data/polyA-site_detection.
 
 
-## AlphaScreen and it’s analysis
+## AlphaScreen 
 
 1490 Arabidopsis TFs were tested against ATX3 protein […] The full result is provided in Supplementary Table N in the paper.
 
@@ -42,5 +39,19 @@ The binding sequence of screened 1490 TFs were extracted from planttfdb (Ath_TF_
 Notable motifs discovered through SVM modeling were screened for the matching TFBS in the database. First, the query sequences, ‘RGCCCAW’,'TCGTCGTC','TCYGATTC' and 'SCGGCGR' were converted to position matrix in meme format by `scripts/make_TOMTOM_query.ipyenv`. Derived meme files were searched against the following databases using tomotom; JASPAR_CORE_2014_plants.meme, ArabidopsisDAPv1.meme and ArabidopsisPBM_20140210.meme in the MEME Suite’s motif_databases.12.19, and Ath_TF_binding_motifs.meme in PlantTFDB.  
 
 
+# Figure-by-Figure description on data visualisation 
 
+Figure 1. 
+
+AlphaFold models were aquired from uniprot on May 18 2024 and available at data/alpha_fold/pbd
+Domain annotations file can be found in github repo for our previous paper (https://github.com/Satoyo08/Arabidopsis_H3K4me1/tree/main/data/Figure1/*csv), which were also aquired from uniprot.
+Models were colored and visualized using /scripts/chimera_commands.txt
+
+
+The heatmaps were generated using deeptools.
+```
+deeptools bamCompare -b1 $sample -b2 $control -o $outname".bw"  -p 8
+deeptools computeMatrix scale-regions -p 8 -S $bwfiles -R araport11_all_sorted_by_RNA_RPKM.bed -b 500 -a 500 -o $bwname"_over_"$roiname".mat.gz"
+deeptools plotHeatmap -p 8 --sortRegions no --heatmapHeight 14 -m $bwname"_over_"$roiname".mat.gz" -o $bwname"_over_"$roiname".png" 
+```
 
