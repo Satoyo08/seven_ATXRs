@@ -1,0 +1,60 @@
+open /Users/Satoyo/Desktop/on_enzymes/protein_structure/pdb/AF-Q9C5X4-F1-model_v4.pdb
+open /Users/Satoyo/Desktop/on_enzymes/protein_structure/pdb/AF-P0CB22-F1-model_v4.pdb
+open /Users/Satoyo/Desktop/on_enzymes/protein_structure/pdb/AF-Q9M364-F1-model_v4.pdb
+open /Users/Satoyo/Desktop/on_enzymes/protein_structure/pdb/AF-Q9SUE7-F1-model_v4.pdb
+open /Users/Satoyo/Desktop/on_enzymes/protein_structure/pdb/AF-Q8GZ42-F1-model_v4.pdb
+open /Users/Satoyo/Desktop/on_enzymes/protein_structure/pdb/AF-F4K1J4-F1-model_v4.pdb
+open /Users/Satoyo/Desktop/on_enzymes/protein_structure/pdb/AF-O23372-F1-model_v4.pdb
+
+set bgColor white
+lighting flat
+
+#these are SET
+align #2/A:930-1037 toAtoms #1/A:909-1016 matchAtomNames true
+align #3/A:886-993 toAtoms #1/A:909-1016 matchAtomNames true
+align #4/A:896-1002 toAtoms #1/A:909-1016 matchAtomNames true
+align #5/A:912-1018 toAtoms #1/A:909-1016 matchAtomNames true
+align #6/A:1277-1383 toAtoms #1/A:909-1016 matchAtomNames true
+align #7/A:1757-1904 toAtoms #1/A:909-1016 matchAtomNames true
+
+color #1/A gray
+color #2/A gray
+color #3/A gray
+color #4/A gray
+color #5/A gray
+color #6/A gray
+color #7/A gray
+
+
+color #1/A:210-252 #662C91
+color #1/A:299-391 #3333FF
+color #1/A:447-497 #00FFE5
+color #1/A:506-582 #73FFB2
+color #1/A:623-658 #FFB200
+color #1/A:688-785 #FFFF00
+color #1/A:909-1016 #E41A1C
+color #2/A:313-405 #3333FF
+color #2/A:463-513 #00FFE5
+color #2/A:522-598 #73FFB2
+color #2/A:640-675 #FFB200
+color #2/A:683-806 #FFFF00
+color #2/A:930-1037 #E41A1C
+color #3/A:187-288 #3333FF
+color #3/A:364-418 #FF7300
+color #3/A:444-527 #BFFF00
+color #3/A:560-595 #FFB200
+color #3/A:601-714 #FFFF00
+color #3/A:886-993 #E41A1C
+color #4/A:205-305 #3333FF
+color #4/A:400-454 #FF7300
+color #4/A:606-641 #FFB200
+color #4/A:647-760 #FFFF00
+color #4/A:896-1002 #E41A1C
+color #5/A:221-321 #3333FF
+color #5/A:415-469 #FF7300
+color #5/A:621-656 #FFB200
+color #5/A:662-775 #FFFF00
+color #5/A:912-1018 #E41A1C
+color #7/A:983-1032 #A5CDE2
+color #7/A:1757-1904 #E41A1C
+color #6/A:1277-1383 #E41A1C
