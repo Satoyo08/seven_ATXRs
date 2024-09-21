@@ -102,7 +102,7 @@ fit1 <- euler(c(
   "B&C" = 715,
   "A&B&C" = 405
 ))
-plot(fit1)
+plot(fit1) #adjust color in affinity designer
 
 
 # 1. boxplot

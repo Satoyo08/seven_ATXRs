@@ -2,17 +2,17 @@
 library(ggplot2)
 library(scales)
 
-# Read the data (assuming it's a tab-separated file)
-Rdata <- read.table("/Users/Satoyo/Desktop/sevenATXRpaper/seven_ATXRs_localization_git/data/ATX345-marked_GO.txt", header = TRUE, sep = "\t", stringsAsFactors = FALSE,fill = TRUE,skip=12, quote = "")
+# Read 
+Rdata <- read.table("../data/ATX345-marked_GO.txt", header = TRUE, sep = "\t", stringsAsFactors = FALSE,fill = TRUE,skip=12, quote = "")
 head(data)
 colnames(Rdata)<-c("BiologicalProcess","inputlist","total","expected","over/under","Fold.Enrichment","Raw.P.value")
-# Ensure numeric columns are treated as numbers
-Rdata$FoldEnrichment <- as.numeric(Rdata$Fold.Enrichment) # Assuming column name is "Fold.Enrichment"
-Rdata$PValue <- as.numeric(Rdata$Raw.P.value) # Assuming column name is "Raw.P.value"
+
+Rdata$FoldEnrichment <- as.numeric(Rdata$Fold.Enrichment) 
+Rdata$PValue <- as.numeric(Rdata$Raw.P.value) 
 nsdata<-Rdata[Rdata$Fold.Enrichment>2.5,]
 data<-nsdata[rev(order(nsdata$PValue)),]
 
-# BiologicalProcessをPValueでソートした順に因子化
+# BiologicalProcess sorted by PValue and make it factor
 data$BiologicalProcess <- factor(data$BiologicalProcess, levels = unique(data$BiologicalProcess))
 
 

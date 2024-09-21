@@ -48,7 +48,7 @@ Domain annotations file can be found in github repo for our previous paper (http
 Models were colored and visualized using /scripts/chimera_commands.txt
 
 
-The heatmaps were generated using deeptools. For genomic localizations of ATX(R)s...
+The heatmaps were generated using deeptools. For genomic localizations of H3K4-ATX(R)s...
 ```
 deeptools bamCompare -b1 $sample -b2 $control -o $outname".bw"  -p 8
 deeptools computeMatrix scale-regions -p 8 -S $bwfiles -R araport11_all_sorted_by_RNA_RPKM.bed -b 500 -a 500 -o $bwname"_over_"$roiname".mat.gz"
@@ -75,5 +75,54 @@ Full codes for training and visualization with links to the models and data can 
 ### Figure 3
 
 `scripts/SVM_training.ipyenv` was used to train SVM models.
-Full codes for visualization and the links to the models can be found in Rscripts/
+Full codes for visualization and the links to the models can be found in Rscripts/Figure3.R
 
+### Figure 4
+
+ChIP-seq peaks were called by ` macs2 callpeak -t mutant.bam -c control.bam -n output file -f BAM -g 1.3e8`. For a-d, full codes for visualization and the links to the intermediate files can be found in Figure4_SFig_5_6.R
+
+### Figure 5 
+
+See Figure/table legend, material and method section and Supplementary tables 2 and 3 in the paper offers enough explanation.
+
+
+### Figure 6
+
+See the Figure/table legend, material and method section and Supplementary tables 4 in the paper.
+
+### Supplementary Figure 1
+
+The heatmaps were generated using deeptools as described in the above section for Figure 1
+
+### Supplementary Figure 2
+
+Full codes for training and visualization with links to the models and data can be found in Rscripts/Figure2.r
+
+### Supplementary Figure 3,4
+
+Full codes for visualization and the links to the models can be found in Rscripts/Figure3.R
+
+### Supplementary Figure 5,6
+
+Full codes for visualization and the links to the intermediate files can be found in Rscripts/Figure4_SFig_5_6.R
+
+### Supplementary Figure 7
+
+Full codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure7.r
+
+### Supplementary Figure 8
+
+See Supplemntary Methods and splicing analysis section above.
+
+### Supplementary Figure 9
+
+See Supplemntary Methods and  polyA-site detection section above.
+For b, Full codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure9.r
+
+### Supplemntary Figure 10 
+
+See legend
+
+### Supplementary Figure 11
+
+Full codes for visualization and the links to the intermediate files can be found in Rscripts/ATX345_GO.r
