@@ -10,7 +10,7 @@ source("RF_functions.r")
 
 # ------- rep1 --------
 ## read data for rep1 
-savedir='..data/RandomForest/rep1_models'
+savedir='../data/RandomForest/rep1_models/'
 
 TSS<-read.table('../data/RandomForest/ChIP14_RPM_TSS.txt',header=T)
 TES<-read.table('../data/RandomForest/ChIP14_RPM_TES.txt',header=T)
@@ -21,7 +21,7 @@ colnames(tags)<-c('ID',paste(nams,'TSS',sep='_'),paste(nams,'TES',sep='_'),paste
 
 
 
-### do RF
+### train RF
 # 1. ATX1_TSS     
 S<-tags[order(tags$WT.TAG_TSS-tags$ATX1.TAG_TSS),];posID<-S[1:3000,1];
 ATX1_TSS<-repeat_train(AL,posID,'remove nothing')
@@ -64,7 +64,7 @@ ATXR7_TES<-repeat_train(AL,posID,'remove nothing')
 savefilename="ATXR7_TES"
 save(ATXR7_TES,file=paste(savedir,savefilename,sep=''))
 
-### 4.2 plot RF ---------
+### 4.2 Visualize RF ---------
 model_list<-list.files(savedir,full.names = T)
 par(mar=c(0.5,2,0.5,0),mfrow=c(7,2))
 for(i in 7:1){
@@ -90,7 +90,7 @@ boxplot(AL$TSS_H1[AL$ID %in% ATX3],AL$TSS_H1[AL$ID %in% ATX4],AL$TSS_H1[AL$ID %i
 
 # ------- rep2 --------
 # read data for rep2 
-savedir='..data/RandomForest/rep2_models'
+savedir='../data/RandomForest/rep2_models'
 TSS<-read.table('../data/RandomForest/ChIP15_TAGS_RPM_TSS.txt',header=T)
 TES<-read.table('../data/RandomForest/ChIP15_TAGS_RPM_TES.txt',header=T)
 gb<-read.table('../data/RandomForest/ChIP15_TAGS_RPM.txt',header=T)
@@ -122,3 +122,4 @@ S<-tags[order(tags$WT.rep2.x_TSS-tags$ATXR3.TAG.rep2.x_TSS),];posID<-S[1:3000,1]
 ATXR3_TSS<-repeat_train(AL,posID,'remove nothing')
 savefilename="ATXR3_TSS"
 save(ATXR3_TSS,file=paste(savedir,savefilename,sep=''))
+

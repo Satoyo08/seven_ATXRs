@@ -1,3 +1,6 @@
+# This Script reads the output files from the trained SVM models and visualizes them
+# The script for training can be found at ../scripts/SVM_training.ipyenv
+
 ### 5.1 output ROC
 library(Biostrings);library(qgraph)
 source('custom_functions.r')

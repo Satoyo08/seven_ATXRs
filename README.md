@@ -41,17 +41,39 @@ Notable motifs discovered through SVM modeling were screened for the matching TF
 
 # Figure-by-Figure description on data visualisation 
 
-Figure 1. 
+### Figure 1
 
 AlphaFold models were aquired from uniprot on May 18 2024 and available at data/alpha_fold/pbd
 Domain annotations file can be found in github repo for our previous paper (https://github.com/Satoyo08/Arabidopsis_H3K4me1/tree/main/data/Figure1/*csv), which were also aquired from uniprot.
 Models were colored and visualized using /scripts/chimera_commands.txt
 
 
-The heatmaps were generated using deeptools.
+The heatmaps were generated using deeptools. For genomic localizations of ATX(R)s...
 ```
 deeptools bamCompare -b1 $sample -b2 $control -o $outname".bw"  -p 8
 deeptools computeMatrix scale-regions -p 8 -S $bwfiles -R araport11_all_sorted_by_RNA_RPKM.bed -b 500 -a 500 -o $bwname"_over_"$roiname".mat.gz"
 deeptools plotHeatmap -p 8 --sortRegions no --heatmapHeight 14 -m $bwname"_over_"$roiname".mat.gz" -o $bwname"_over_"$roiname".png" 
 ```
+For H3K4me profiles, the ChIP-seq data was reanalyzed from our previous paper (Oya et al., 2022)
+
+```
+#WT profile
+deeptools bamCoverage -b $bamfile -o $bwname".bw"
+deeptools computeMatrix scale-regions -p 8 -S $bwfiles -R araport11_all_sorted_by_RNA_RPKM.bed -b 500 -a 500 -o $bwname"_over_"$roiname".mat.gz"
+deeptools plotHeatmap -p 8 --sortRegions no --heatmapHeight 14 -m $bwname"_over_"$roiname".mat.gz" -o $bwname"_over_"$roiname".png" 
+
+# mutant/WT profile
+deeptools bamCompare -b1 $sample -b2 $control -o $outname".bw"  -p 8
+deeptools computeMatrix scale-regions -p 8 -S $bwfiles -R araport11_all_sorted_by_RNA_RPKM.bed -b 500 -a 500 -o $bwname"_over_"$roiname".mat.gz"
+deeptools plotHeatmap  --zMin -0.8 --zMax 0.8 --sortRegions no  --colorMap YlGnBu --heatmapHeight 14 -m $mat.gz -o $png
+```
+
+### Figure 2
+
+Full codes for training and visualization with links to the models and data can be found in Rscripts/Figure2.r
+
+### Figure 3
+
+`scripts/SVM_training.ipyenv` was used to train SVM models.
+Full codes for visualization and the links to the models can be found in Rscripts/
 
