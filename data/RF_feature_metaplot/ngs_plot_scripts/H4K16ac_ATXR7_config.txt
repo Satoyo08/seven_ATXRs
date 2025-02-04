@@ -1,0 +1,2 @@
+~/RF_database_part2/GSE69426_H4K16acsorted_slop.bam ~/gene_list/ATXR7_TES_AtID.txt "H4K16ac_ATXR7"
+~/RF_database_part2/GSE69426_H4K16acsorted_slop.bam ~/gene_list/unbound_ATXR7_TES_AtID.txt "unbound"

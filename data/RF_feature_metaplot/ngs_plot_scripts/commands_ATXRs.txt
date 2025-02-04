@@ -1,0 +1,7 @@
+ngs.plot.r -G Tair10 -R tss -C ATX1-TAG_ATX1_config.txt -O ATX1-TAG_ATX1 -GO none -L 500 &  
+ngs.plot.r -G Tair10 -R tss -C ATX2-TAG_ATX2_config.txt -O ATX2-TAG_ATX2 -GO none -L 500 &  
+ngs.plot.r -G Tair10 -R tss -C ATX3-TAG_ATX3_config.txt -O ATX3-TAG_ATX3 -GO none -L 500 &  
+ngs.plot.r -G Tair10 -R tss -C ATX4-TAG_ATX4_config.txt -O ATX4-TAG_ATX4 -GO none -L 500 &  
+ngs.plot.r -G Tair10 -R tss -C ATX5-TAG_ATX5_config.txt -O ATX5-TAG_ATX5 -GO none -L 500 &  
+ngs.plot.r -G Tair10 -R tss -C ATXR3-TAG_ATXR3_config.txt -O ATXR3-TAG_ATXR3 -GO none -L 500 &  
+ngs.plot.r -G Tair10 -R tes -C ATXR7-TAG_ATXR7_config.txt -O ATXR7-TAG_ATXR7 -GO none -L 500 &  

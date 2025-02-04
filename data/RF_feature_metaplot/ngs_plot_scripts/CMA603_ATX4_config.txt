@@ -1,0 +1,2 @@
+~/RF_database_part2/CMA603_Colsorted_slop.bam ~/gene_list/ATX4_TSS_AtID.txt "CMA603_ATX4"
+~/RF_database_part2/CMA603_Colsorted_slop.bam ~/gene_list/unbound_ATX4_TSS_AtID.txt "unbound"

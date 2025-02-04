@@ -21,7 +21,7 @@ ROCR3<-plot_ROC_fromTPRFPR('../data/SVM/rep2/SVM_outputs/ChIP15_ATXR3_FPRTPR_Mar
 
 ROC1$auc_score # get ROC score. for ROC1, for example
 
-### 5.2 compare weights --------
+### 5.2 load weights --------
 # rep 1
 weightfiles<-list.files('../data/SVM/rep1/SVM_outputs',pattern='weigths',full.name=TRUE);weightfiles
 ST1<-read.table(weightfiles[1],header=F)
@@ -40,6 +40,25 @@ for(i in 1:4){
   colnames(ST2)[1+i]<-substr(basename(weightfiles[i]),1,nchar(basename(weightfiles[i]))-14)
 }
 
+#Oya 2022
+weightfiles<-list.files('/Users/Satoyo/Desktop/temp/論文作業/論文figs/rename_later/Arabidopsis_H3K4me1/data/Figure4/weights',full.name=TRUE);weightfiles # replace the path with https://github.com/Satoyo08/Arabidopsis_H3K4me1/tree/main/data/Figure4/weights
+ST3<-read.table(weightfiles[1],header=F)[,1:5]
+for(i in 1:4){
+  weights1<-read.table(weightfiles[i],header=F);weights1<-add_mean(weights1);
+  ST3[,1+i]<-weights1$V7
+  colnames(ST3)[1+i]<-substr(basename(weightfiles[i]),1,nchar(basename(weightfiles[i]))-8)
+}
+head(ST3)
+# for supplementary Fig, compare weights
+par(mfrow=c(2,4),mar=c(2,2,0.2,0.2))
+m1<-ST1$ATX1;m2<-ST3$ChIP7_ATX1;plot(m1,m2,pch=16,cex=0.6);text(min(m1),max(m2)*0.9,paste("r = ",round(cor.test(m1,m2,method="pearson")$estimate,digits=2)),pos=4,cex=1.5)
+m1<-ST1$ATX2;m2<-ST3$ChIP7_ATX2;plot(m1,m2,pch=16,cex=0.6);text(min(m1),max(m2)*0.9,paste("r = ",round(cor.test(m1,m2,method="pearson")$estimate,digits=2)),pos=4,cex=1.5)
+plot(1,1,type='n');plot(1,1,type='n',xaxt='n')
+m1<-ST1$ATX3;m2<-ST2$ChIP15_ATX3;plot(m1,m2,pch=16,cex=0.6);text(min(m1),max(m2)*0.9,paste("r = ",round(cor.test(m1,m2,method="pearson")$estimate,digits=2)),pos=4,cex=1.5)
+m1<-ST1$ATX4;m2<-ST2$ChIP15_ATX4;plot(m1,m2,pch=16,cex=0.6);text(min(m1),max(m2)*0.9,paste("r = ",round(cor.test(m1,m2,method="pearson")$estimate,digits=2)),pos=4,cex=1.5)
+
+m1<-ST1$ATX5;m2<-ST2$ChIP15_ATX5;plot(m1,m2,pch=16,cex=0.6,xlim=c(-0.006,0.009),ylim=c(-0.007,0.012));text(min(m1),max(m2)*0.9,paste("r = ",round(cor.test(m1,m2,method="pearson")$estimate,digits=2)),pos=4,cex=1.5)
+m1<-ST1$ATXR3;m2<-ST2$ChIP15_ATXR3;plot(m1,m2,pch=16,cex=0.6);text(min(m1),max(m2)*0.9,paste("r = ",round(cor.test(m1,m2,method="pearson")$estimate,digits=2)),pos=4,cex=1.5)
 
 ### 5.3 plot string --------
 
@@ -113,3 +132,60 @@ ST1[,9]<-apply(rankTF[,2:8],1,sum)
 feature_list<-ST1[ST1$V9>0,1]
 border_colors<-replace_features(feature_list)
 hmp_autoclust<-heatmap(as.matrix(ST1[ST1$V9>0,2:8]),Colv=NA,scale='col',RowSideColors=border_colors,labRow=F)#ST1[ST1$V9>0,1]) 
+
+### 5.5 motif distribution over TSS ------
+setwd("../data/ATX3_motif_search_in_TSS")
+# read the bedfile, merge with original 3000 gene list, sequentially numbered. Use the sequential number and location to make polygon images
+system('grep ">" ATX3_TSS_bound_TSS_150_300.fasta | sed -e "s/>//" > posheaders')
+system('grep ">" random_3000_ATX3_unbound.fasta | sed -e "s/>//" > negheaders')
+all_posid<-read.table('posheaders')
+all_negid<-read.table('negheaders')
+all_posid$sequancial<-1:nrow(all_posid);nrow(all_posid)
+all_negid$sequancial<-1:nrow(all_negid);nrow(all_negid)
+
+# load bedfiles representing the motif location- these files were generated using seqkit;
+
+# posfa=ATX3_TSS_bound_TSS_150_300.fasta
+# negfa=ATX3_TSS_unbound_TSS_150_300.fasta
+# seqkit sample -n 3077 $negfa > random_3000_ATX3_unbound.fasta # -n and output line number does not exactly match. -n 3077 this achieves 3001 sequence
+# negsample=random_3000_ATX3_unbound.fasta
+# seqkit locate -p 'TCGTCGTC' -m 0 $posfa > ATX3_TCGTCGTC.bed
+# seqkit locate -p 'TCGTCGTC' -m 0 $negsample > ATX3_unbound_TCGTCGTC.bed
+# 
+# seqkit locate -p 'TCCGATTC' -p 'TCTGATTC' -m 0 $posfa > ATX3_TCYGATTC.bed
+# sequin locate -p 'TCCGATTC' -p 'TCTGATTC' -m 0 $negsample > ATX3_unbound_TCYGATTC.bed
+# 
+# # SCGGCGR (S = G or C, R = A or G),
+# seqkit locate -p 'GCGGCGA' -p 'GCGGCGG' -p 'CCGGCGA' -p 'CCGGCGG' -m 0 $posfa > ATX3_SCGGCGR.bed
+# seqkit locate -p 'GCGGCGA' -p 'GCGGCGG' -p 'CCGGCGA' -p 'CCGGCGG' -m 0 $negsample > ATX3_unbound_SCGGCGR.bed
+# 
+# # RGCCCAW (R = A or G, W = A or T) 
+# seqkit locate -p 'AGCCCAA' -p 'AGCCCAT' -p 'GGCCCAA' -p 'GGCCCAT' -m 0 $posfa > ATX3_RGCCCAW.bed
+# seqkit locate -p 'AGCCCAA' -p 'AGCCCAT' -p 'GGCCCAA' -p 'GGCCCAT' -m 0 $negsample > ATX3_unbound_RGCCCAW.bed
+
+bound_bed<-read.table("ATX3_RGCCCAW.bed",header=T)
+unbound_bed<-read.table("ATX3_unbound_RGCCCAW.bed",header=T)
+
+POSmergedDF<-merge(all_posid,bound_bed,by.x='V1',by.y='seqID',all.x=TRUE)
+NEGmergedDF<-merge(all_negid,unbound_bed,by.x='V1',by.y='seqID',all.x=TRUE)
+
+
+PhistDF<-hist(POSmergedDF$start,xlim=c(0,451),breaks=10)
+NhistDF<-hist(NEGmergedDF$start,xlim=c(0,451),breaks=10)
+
+#colors; TGCTGCTC #f5ca51 TCYGATTC #ABDDA4, SCGGCGR #bd0954, RGCCCAW  #FDAD62
+# EPS size 245 x 252
+
+clr="#FDAD62"
+dev.off();par(mfrow=c(3,1));par(mar=c(0.2,2,0.2,0.2))
+plot(1:length(NhistDF$counts),PhistDF$counts,col=clr,lwd=2,type='l',xaxt='n',ylim=c(0,max(PhistDF$counts)));par(new=T)
+plot(1:length(NhistDF$counts),NhistDF$counts,col="grey60",type='l',lwd=2,xaxt='n',yaxt='n',ylim=c(0,max(PhistDF$counts)))
+
+plot(1,1,type='n',xlim=c(0,451),ylim=c(0,3000),xaxt='n',yaxt='n',xlab='',ylab='')
+abline(v=150,lty=2)
+rect(POSmergedDF$start,POSmergedDF$sequancial-1,POSmergedDF$end,POSmergedDF$sequancial,col=clr,border=clr)
+
+plot(1,1,type='n',xlim=c(0,451),ylim=c(0,3000),xaxt='n',yaxt='n',xlab='',ylab='')
+abline(v=150,lty=2)
+rect(NEGmergedDF$start,NEGmergedDF$sequancial-1,NEGmergedDF$end,NEGmergedDF$sequancial,col=clr,border=clr)
+

@@ -18,6 +18,8 @@ plot_RFmodel<-function(model,palette,sort,col_key,space){
 }
 
 
+
+
 # ---------- Fig. 3d-f ---------------
 # plot ROC for the model loaded above
 
@@ -55,3 +57,4 @@ loadRData <- function(fileName){
   load(fileName)
   get(ls()[ls() != "fileName"])
 }
+

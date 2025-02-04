@@ -1,0 +1,2 @@
+~/RF_database_part2/Col_AT_S118_L001_R1_001.fastq_slop_sorted.bam ~/gene_list/ATXR3_TSS_AtID.txt "ATAC_ATXR3"
+~/RF_database_part2/Col_AT_S118_L001_R1_001.fastq_slop_sorted.bam ~/gene_list/unbound_ATXR3_TSS_AtID.txt "unbound"

@@ -1,0 +1,2 @@
+~/ChIP13_14/JN00009417/rawdata/oya62_.bam:~/ChIP13_14/JN00009417/rawdata/oya61_.bam ~/gene_list/ATX1_TSS_AtID.txt "ATX1-TAG_ATX1"
+~/ChIP13_14/JN00009417/rawdata/oya62_.bam:~/ChIP13_14/JN00009417/rawdata/oya61_.bam ~/gene_list/unbound_ATX1_TSS_AtID.txt "unbound"

@@ -1,0 +1,2 @@
+~/RF_database_part2/Col_K36me3__slop_sorted.bam ~/gene_list/ATXR3_TSS_AtID.txt "K36me3_ATXR3"
+~/RF_database_part2/Col_K36me3__slop_sorted.bam ~/gene_list/unbound_ATXR3_TSS_AtID.txt "unbound"

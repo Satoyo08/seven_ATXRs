@@ -1,0 +1,2 @@
+~/RF_database_part2/GSE112952_H2Bub_1sorted_slop.bam ~/gene_list/ATX5_TSS_AtID.txt "H2Bub_ATX5"
+~/RF_database_part2/GSE112952_H2Bub_1sorted_slop.bam ~/gene_list/unbound_ATX5_TSS_AtID.txt "unbound"

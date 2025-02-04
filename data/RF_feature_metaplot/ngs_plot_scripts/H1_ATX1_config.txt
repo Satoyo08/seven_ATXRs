@@ -1,0 +1,2 @@
+~/RF_database_part2/GSE96834_H1_integrate.sam.sorted.bamsorted_slop_sorted.bam ~/gene_list/ATX1_TSS_AtID.txt "H1_ATX1"
+~/RF_database_part2/GSE96834_H1_integrate.sam.sorted.bamsorted_slop_sorted.bam ~/gene_list/unbound_ATX1_TSS_AtID.txt "unbound"
