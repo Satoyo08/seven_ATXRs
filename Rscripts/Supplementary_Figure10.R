@@ -1,5 +1,4 @@
 source('custom_functions.r')
-library(eulerr)
 #
 # read alpha_screening population and motif DBs
 Jan23<-read.table('../data/AlphaScreen/ATX3_VS_1490TFs.csv',sep=",",header=TRUE,quote="\"") # == Sup table 3

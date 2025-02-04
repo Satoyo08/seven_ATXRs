@@ -90,37 +90,35 @@ See the Figure/table legend, material and method section and Supplementary table
 
 ### Supplementary Figure 1
 
-The heatmaps were generated using deeptools as described in the above section for Figure 1
+The heatmaps were generated using deeptools as described in the above section for Figure 1. Codes for venn diagram and hypergeometric test are provided in Supplementary_Figure1.R
 
 ### Supplementary Figure 2
+Metaplots were generated using ngs.plot.r, and re-formatted in R by log-transforming the y-axis. The intermediate files (output datafile from ngs.plot.r) for metaplots can be found at data/RF_feature_metaplot
 
+### Supplementary Figure 3
 Full codes for training and visualization with links to the models and data can be found in Rscripts/Figure2.r
 
-### Supplementary Figure 3,4
+### Supplementary Figure 4,5,6 
 
 Full codes for visualization and the links to the models can be found in Rscripts/Figure3.R
 
-### Supplementary Figure 5,6
+### Supplementary Figure 7,8
 
-Full codes for visualization and the links to the intermediate files can be found in Rscripts/Figure4_SFig_5_6.R
-
-### Supplementary Figure 7
-
-Full codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure7.r
-
-### Supplementary Figure 8
-
-See the Supplementary Methods and Splicing Analysis section above.
-
-### Supplementary Figure 9
-
-See the Supplementary Methods and polyA-site detection section above.
-For b, Full codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure9.r
+Full codes for visualization and the links to the intermediate files can be found in Rscripts/Figure4_SFig_7_8.R
 
 ### Supplementary Figure 10
 
-See legend
+Full codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure10.r
 
-### Supplementary Figure 11
+### Supplementary Figure 12
+
+See the Supplementary Methods and Splicing Analysis section above.
+
+### Supplementary Figure 13
+
+See the Supplementary Methods and polyA-site detection section above.
+For b, Full codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure13.r
+
+### Supplementary Figure 15
 
 Full codes for visualization and the links to the intermediate files can be found in Rscripts/ATX345_GO.r
