@@ -1,6 +1,6 @@
 # seven_ATXRs
 
-Datasets and codes for "Comparative characterization of the seven H3K4 methyltransferase in Arabidopsis thaliana" (preparing for submission)
+Datasets and codes for "Comparative characterization of chromatin-targeting mechanisms across seven H3K4 methyltransferases in Arabidopsis" in Plant Communication (2026)
 
 # codes for data preprocessing (in the 'scripts' folder)
 
