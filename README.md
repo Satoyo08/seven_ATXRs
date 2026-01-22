@@ -68,16 +68,16 @@ deeptools plotHeatmap  --zMin -0.8 --zMax 0.8 --sortRegions no  --colorMap YlGnB
 
 ### Figure 2
 
-Full codes for training and visualization with links to the models and data can be found in Rscripts/Figure2.r
+Codes for training and visualization with links to the models and data can be found in Rscripts/Figure2.r
 
 ### Figure 3
 
 `scripts/SVM_training.ipyenv` was used to train SVM models.
-Full codes for visualization and the links to the models can be found in Rscripts/Figure3.R
+Codes for visualization and the links to the models can be found in Rscripts/Figure3.R
 
 ### Figure 4
 
-ChIP-seq peaks were called by ` macs2 callpeak -t mutant.bam -c control.bam -n output file -f BAM -g 1.3e8`. For a-d, full codes for visualization and the links to the intermediate files can be found in Figure4_SFig_5_6.R
+ChIP-seq peaks were called by ` macs2 callpeak -t mutant.bam -c control.bam -n output file -f BAM -g 1.3e8`. For a-d, codes for visualization and the links to the intermediate files can be found in Figure4_SFig_5_6.R
 
 ### Figure 5 
 
@@ -96,19 +96,19 @@ The heatmaps were generated using deeptools as described in the above section fo
 Metaplots were generated using ngs.plot.r, and re-formatted in R by log-transforming the y-axis. The intermediate files (output datafile from ngs.plot.r) for metaplots can be found at data/RF_feature_metaplot
 
 ### Supplementary Figure 3
-Full codes for training and visualization with links to the models and data can be found in Rscripts/Figure2.r
+Codes for training and visualization with links to the models and data can be found in Rscripts/Figure2.r
 
 ### Supplementary Figure 4,5,6 
 
-Full codes for visualization and the links to the models can be found in Rscripts/Figure3.R
+Codes for visualization and the links to the models can be found in Rscripts/Figure3.R
 
 ### Supplementary Figure 7,8
 
-Full codes for visualization and the links to the intermediate files can be found in Rscripts/Figure4_SFig_7_8.R
+Codes for visualization and the links to the intermediate files can be found in Rscripts/Figure4_SFig_7_8.R
 
 ### Supplementary Figure 10
 
-Full codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure10.r
+Codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure10.r
 
 ### Supplementary Figure 12
 
@@ -117,8 +117,8 @@ See the Supplementary Methods and Splicing Analysis section above.
 ### Supplementary Figure 13
 
 See the Supplementary Methods and polyA-site detection section above.
-For b, Full codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure13.r
+For b, Codes for visualization and the links to the intermediate files can be found in Rscripts/Supplementary_Figure13.r
 
 ### Supplementary Figure 15
 
-Full codes for visualization and the links to the intermediate files can be found in Rscripts/ATX345_GO.r
+Codes for visualization and the links to the intermediate files can be found in Rscripts/ATX345_GO.r
